@@ -1,6 +1,9 @@
 # MyNormatic
 ### Corporate Management System (Academic Prototype)
 
+## 🖥️ System Preview
+![MyNormatic Dashboard](screenshot-dashboard.png)
+
 ## 🔗 Quick Access
 🌐 Live System (Vercel):  
 https://mynormatic-system.vercel.app/index.html  
