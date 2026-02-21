@@ -1,6 +1,9 @@
 # MyNormatic
 ### Corporate Management System (Academic Prototype)
 
+## 🏆 Academic Recognition
+Selected as the best project of the class and nominated for the Learning Journeys Award.
+
 ## 🖥️ System Preview
 ![MyNormatic Dashboard](screenshot-dashboard.png)
 
