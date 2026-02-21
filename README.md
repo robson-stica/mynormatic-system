@@ -1,5 +1,5 @@
 # MyNormatic
-### Corporate Management System (Academic Mini-ERP Prototype)
+### Corporate Management System (Academic Prototype)
 
 ## 📌 Overview
 MyNormatic is a web-based corporate management system developed during a Software Engineering academic project in partnership with the company Normatic.
