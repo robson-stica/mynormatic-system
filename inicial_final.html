@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normatic - Tratamentos Térmicos | Excelência e Inovação</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .gradient-red {
+            background: linear-gradient(135deg, #ca3828 0%, #a02d1f 100%);
+        }
+        
+        .gradient-blue {
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url('bannerforno.png') center/cover;
+            min-height: 100vh;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #ca3828, #764ba2);
+            border-radius: 2px;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            border-radius: 50px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+        
+        .navbar-transparent {
+            background: transparent;
+            transition: all 0.3s;
+        }
+        
+        .navbar-solid {
+            background: #173c58 !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .treatment-icon {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #ca3828, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            position: relative;
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s;
+        }
+        
+        .carousel-slide.active {
+            opacity: 1;
+            visibility: visible;
+            position: relative;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .carousel-dot.active {
+            background: #ca3828;
+            width: 32px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5541991485285" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar-transparent fixed w-full top-0 z-50">
+        <div class="container mx-auto px-6 py-2">
+            <div class="flex items-center justify-between">
+                <div class="text-white font-bold text-2xl -ml-8 -mt-2">
+                    <img src="logotransparente.png" alt="Normatic" class="h-32 w-auto">
+                </div>
+                <div class="hidden md:flex space-x-8 text-white">
+                    <a href="#inicio" class="hover:text-red-400 transition">Início</a>
+                    <a href="#sobre" class="hover:text-red-400 transition">Sobre</a>
+                    <a href="#tratamentos" class="hover:text-red-400 transition">Tratamentos</a>
+                    <a href="#estrutura" class="hover:text-red-400 transition">Estrutura</a>
+                    <a href="#contato" class="hover:text-red-400 transition">Contato</a>
+                    <a href="index.html" class="gradient-red px-6 py-2 rounded-full font-semibold hover:shadow-xl transition transform hover:scale-105 flex items-center gap-2">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Acessar Portal
+                    </a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-white text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-blue-900 bg-opacity-95 z-40 md:hidden">
+        <div class="flex flex-col items-center justify-center h-full space-y-8 text-white text-xl">
+            <a href="#inicio" class="mobile-link hover:text-red-400 transition">Início</a>
+            <a href="#sobre" class="mobile-link hover:text-red-400 transition">Sobre</a>
+            <a href="#tratamentos" class="mobile-link hover:text-red-400 transition">Tratamentos</a>
+            <a href="#estrutura" class="mobile-link hover:text-red-400 transition">Estrutura</a>
+            <a href="#contato" class="mobile-link hover:text-red-400 transition">Contato</a>
+            <a href="index.html" class="gradient-red px-8 py-3 rounded-full font-semibold hover:shadow-xl transition transform hover:scale-105 flex items-center gap-2">
+                <i class="fas fa-sign-in-alt"></i>
+                Acessar Portal
+            </a>
+        </div>
+    </div>
+    
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section flex items-center justify-center text-white">
+        <div class="container mx-auto px-6 text-center fade-in">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-2xl">
+                TRATAMENTO QUE FAZ<br>
+                <span class="text-red-500 drop-shadow-2xl">A DIFERENÇA</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-100 drop-shadow-lg font-medium">
+                Excelência em tratamentos térmicos com tecnologia de ponta e equipe especializada
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contato" class="gradient-red text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transition transform hover:scale-105">
+                    Solicitar Orçamento
+                </a>
+                <a href="#tratamentos" class="bg-white text-blue-900 px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transition transform hover:scale-105">
+                    Nossos Serviços
+                </a>
+            </div>
+            
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-4xl mx-auto">
+                <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-lg p-6 border border-white border-opacity-30">
+                    <div class="text-4xl font-bold text-red-400 drop-shadow-lg">16+</div>
+                    <div class="text-sm mt-2 font-semibold drop-shadow-md">Fornos</div>
+                </div>
+                <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-lg p-6 border border-white border-opacity-30">
+                    <div class="text-4xl font-bold text-red-400 drop-shadow-lg">5</div>
+                    <div class="text-sm mt-2 font-semibold drop-shadow-md">Máquinas Indutivas</div>
+                </div>
+                <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-lg p-6 border border-white border-opacity-30">
+                    <div class="text-4xl font-bold text-red-400 drop-shadow-lg">2400m²</div>
+                    <div class="text-sm mt-2 font-semibold drop-shadow-md">Área Construída</div>
+                </div>
+                <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-lg p-6 border border-white border-opacity-30">
+                    <div class="text-4xl font-bold text-red-400 drop-shadow-lg">1º</div>
+                    <div class="text-sm mt-2 font-semibold drop-shadow-md">Forno a Vácuo PR</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sobre Section -->
+    <section id="sobre" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 section-title mb-4">Sobre a Normatic</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Referência em tratamentos térmicos com qualidade, inovação e compromisso
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h3 class="text-3xl font-bold text-gray-800">Quem Somos</h3>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        A Normatic é uma empresa especializada em tratamentos térmicos, localizada em São José dos Pinhais, região metropolitana de Curitiba. Com uma estrutura moderna e tecnologia de ponta, oferecemos soluções completas para melhorar as propriedades mecânicas dos materiais.
+                    </p>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        Nosso compromisso é com a excelência, inovação e atendimento assertivo que conquista a confiança dos nossos clientes e atende suas necessidades acima de tudo.
+                    </p>
+                    <div class="flex gap-4">
+                        <div class="flex-1 bg-red-50 p-6 rounded-lg">
+                            <i class="fas fa-award text-red-600 text-3xl mb-3"></i>
+                            <h4 class="font-bold text-gray-800 mb-2">Qualidade Certificada</h4>
+                            <p class="text-gray-600 text-sm">Gestão integrada com rigoroso controle de qualidade</p>
+                        </div>
+                        <div class="flex-1 bg-blue-50 p-6 rounded-lg">
+                            <i class="fas fa-leaf text-green-600 text-3xl mb-3"></i>
+                            <h4 class="font-bold text-gray-800 mb-2">Sustentabilidade</h4>
+                            <p class="text-gray-600 text-sm">Cuidado com o meio ambiente e gerações futuras</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=80&w=2070" alt="Fábrica Normatic" class="rounded-2xl shadow-2xl">
+                    <div class="absolute -bottom-6 -left-6 bg-red-600 text-white p-6 rounded-lg shadow-xl">
+                        <div class="text-3xl font-bold">20+</div>
+                        <div class="text-sm">Anos de Experiência</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Carrossel de Depoimentos -->
+    <section class="py-20 gradient-red">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white section-title mb-4">O Que Nossos Clientes Dizem</h2>
+                <p class="text-xl text-white text-opacity-90 max-w-3xl mx-auto">
+                    Confiança conquistada através de excelência e qualidade
+                </p>
+            </div>
+            
+            <div class="carousel-container max-w-4xl mx-auto">
+                <div class="carousel-track">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide active">
+                        <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 mx-4">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="text-red-600 text-5xl mb-6">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <p class="text-gray-700 text-lg md:text-xl leading-relaxed mb-8 italic">
+                                    "A Normatic transformou nossos processos de produção. A qualidade dos tratamentos térmicos é excepcional e o atendimento é impecável. Parceria de confiança há mais de 5 anos."
+                                </p>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                                        MB
+                                    </div>
+                                    <div class="text-left">
+                                        <h4 class="font-bold text-gray-800 text-lg">Marcos Barbosa</h4>
+                                        <p class="text-gray-600">Diretor Industrial - Metalúrgica Curitiba</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide">
+                        <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 mx-4">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="text-red-600 text-5xl mb-6">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <p class="text-gray-700 text-lg md:text-xl leading-relaxed mb-8 italic">
+                                    "O forno a vácuo da Normatic foi um divisor de águas para nossa linha de produtos premium. Acabamento perfeito e propriedades mecânicas superiores. Recomendo sem hesitação!"
+                                </p>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                                        AS
+                                    </div>
+                                    <div class="text-left">
+                                        <h4 class="font-bold text-gray-800 text-lg">Ana Silva</h4>
+                                        <p class="text-gray-600">Gerente de Qualidade - Indústria Mecânica PR</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide">
+                        <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 mx-4">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="text-red-600 text-5xl mb-6">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <p class="text-gray-700 text-lg md:text-xl leading-relaxed mb-8 italic">
+                                    "Profissionalismo e expertise técnica incomparáveis. A nitretação a plasma melhorou significativamente a durabilidade de nossos componentes. Equipe sempre prestativa e comprometida."
+                                </p>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                                        RC
+                                    </div>
+                                    <div class="text-left">
+                                        <h4 class="font-bold text-gray-800 text-lg">Roberto Costa</h4>
+                                        <p class="text-gray-600">Engenheiro Chefe - AutoPeças Sul</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Dots -->
+                <div class="flex justify-center gap-3 mt-8">
+                    <button class="carousel-dot active" data-slide="0"></button>
+                    <button class="carousel-dot" data-slide="1"></button>
+                    <button class="carousel-dot" data-slide="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Tratamentos Section -->
+    <section id="tratamentos" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 section-title mb-4">Nossos Tratamentos</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Tecnologia avançada para otimizar as propriedades dos seus materiais
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="gradient-red p-6 text-white text-center">
+                        <i class="fas fa-fire treatment-icon text-white"></i>
+                        <h3 class="text-2xl font-bold mt-4">Têmpera e Revenimento</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">
+                            Processo de aquecimento e resfriamento controlado para aumentar a dureza e resistência mecânica dos materiais.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li><i class="fas fa-check text-green-600 mr-2"></i>Aumento de dureza</li>
+                            <li><i class="fas fa-check text-green-600 mr-2"></i>Melhora resistência ao desgaste</li>
+                            <li><i class="fas fa-check text-green-600 mr-2"></i>Controle preciso de temperatura</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="gradient-blue p-6 text-white text-center">
+                        <i class="fas fa-atom treatment-icon text-white"></i>
+                        <h3 class="text-2xl font-bold mt-4">Nitretação a Plasma</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">
+                            Tratamento termoquímico de última geração que enriquece a superfície com nitrogênio através de plasma ionizado.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li><i class="fas fa-check text-green-600 mr-2"></i>Alta dureza superficial</li>
+                            <li><i class="fas fa-check text-green-600 mr-2"></i>Resistência à corrosão</li>
+                            <li><i class="fas fa-check text-green-600 mr-2"></i>Menor distorção dimensional</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="bg-gradient-to-br from-purple-600 to-indigo-600 p-6 text-white text-center">
+                        <i class="fas fa-flask treatment-icon text-white"></i>
+                        <h3 class="text-2xl font-bold mt-4">Forno a Vácuo</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">
+                            Primeiro forno a vácuo para terceiros do Paraná, garantindo tratamentos sem oxidação e máxima qualidade.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li><i class="fas fa-check text-green-600 mr-2"></i>Sem oxidação superficial</li>
+                            <li><i class="fas fa-check text-green-600 mr-2"></i>Acabamento brilhante</li>
+                            <li><i class="fas fa-check text-green-600 mr-2"></i>Ideal para aços especiais</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="bg-gradient-to-br from-orange-500 to-red-600 p-6 text-white text-center">
+                        <i class="fas fa-layer-group treatment-icon text-white"></i>
+                        <h3 class="text-2xl font-bold mt-4">Cementação</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">
+                            Enriquecimento superficial com carbono para criar camada dura mantendo núcleo tenaz.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li><i class="fas fa-check text-green-600 mr-2"></i>Camada superficial dura</li>
+                            <li><i class="fas fa-check text-green-600 mr-2"></i>Núcleo resistente ao impacto</li>
+                            <li><i class="fas fa-check text-green-600 mr-2"></i>Ideal para engrenagens</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="bg-gradient-to-br from-teal-500 to-cyan-600 p-6 text-white text-center">
+                        <i class="fas fa-bolt treatment-icon text-white"></i>
+                        <h3 class="text-2xl font-bold mt-4">Aquecimento Indutivo</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">
+                            Tecnologia de aquecimento rápido e localizado através de indução eletromagnética.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li><i class="fas fa-check text-green-600 mr-2"></i>Aquecimento rápido</li>
+                            <li><i class="fas fa-check text-green-600 mr-2"></i>Tratamento localizado</li>
+                            <li><i class="fas fa-check text-green-600 mr-2"></i>Economia de energia</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Card 6 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="bg-gradient-to-br from-green-500 to-emerald-600 p-6 text-white text-center">
+                        <i class="fas fa-microscope treatment-icon text-white"></i>
+                        <h3 class="text-2xl font-bold mt-4">Ensaios Metalúrgicos</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">
+                            Análises completas para garantir qualidade e conformidade dos tratamentos realizados.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li><i class="fas fa-check text-green-600 mr-2"></i>Líquido penetrante</li>
+                            <li><i class="fas fa-check text-green-600 mr-2"></i>Magnaflux</li>
+                            <li><i class="fas fa-check text-green-600 mr-2"></i>Metalografia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Estrutura Section -->
+    <section id="estrutura" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 section-title mb-4">Nossa Estrutura</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Instalações modernas com tecnologia de ponta
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070" alt="Estrutura Normatic" class="rounded-2xl shadow-2xl">
+                </div>
+                <div class="order-1 md:order-2 space-y-8">
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-6">Instalações de Excelência</h3>
+                        <p class="text-gray-600 text-lg mb-6">
+                            Localizados em São José dos Pinhais, região metropolitana de Curitiba, contamos com uma estrutura completa em 2.400m² de área construída.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gradient-to-br from-red-500 to-red-600 text-white p-6 rounded-xl">
+                            <div class="text-4xl font-bold mb-2">16</div>
+                            <div class="text-sm">Fornos de Tratamento</div>
+                        </div>
+                        <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-xl">
+                            <div class="text-4xl font-bold mb-2">5</div>
+                            <div class="text-sm">Máquinas Indutivas</div>
+                        </div>
+                        <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white p-6 rounded-xl">
+                            <div class="text-4xl font-bold mb-2">1º</div>
+                            <div class="text-sm">Forno a Vácuo PR</div>
+                        </div>
+                        <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-6 rounded-xl">
+                            <div class="text-4xl font-bold mb-2">100%</div>
+                            <div class="text-sm">Controle Qualidade</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-600">
+                        <p class="text-gray-700">
+                            <i class="fas fa-quote-left text-blue-600 mr-2"></i>
+                            Essa estrutura só é possível graças a um rígido controle de qualidade, organização e uma equipe comprometida em atender as expectativas do cliente.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Meio Ambiente Section -->
+    <section class="py-20 bg-gradient-to-br from-green-50 to-emerald-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="text-6xl mb-6">
+                    <i class="fas fa-leaf text-green-600"></i>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 section-title mb-6">Compromisso Ambiental</h2>
+                <p class="text-xl text-gray-600 leading-relaxed">
+                    A Normatic investe continuamente na melhoria de seu sistema de gestão ambiental, procurando preservar recursos naturais e gerando resultados favoráveis para a sociedade e gerações futuras.
+                </p>
+                <div class="grid md:grid-cols-3 gap-6 mt-12">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <i class="fas fa-recycle text-green-600 text-3xl mb-3"></i>
+                        <h4 class="font-bold text-gray-800 mb-2">Gestão de Resíduos</h4>
+                        <p class="text-gray-600 text-sm">Tratamento e descarte responsável</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <i class="fas fa-bolt text-yellow-600 text-3xl mb-3"></i>
+                        <h4 class="font-bold text-gray-800 mb-2">Eficiência Energética</h4>
+                        <p class="text-gray-600 text-sm">Processos otimizados</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <i class="fas fa-certificate text-blue-600 text-3xl mb-3"></i>
+                        <h4 class="font-bold text-gray-800 mb-2">Certificações</h4>
+                        <p class="text-gray-600 text-sm">Conformidade ambiental</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contato Section -->
+    <section id="contato" class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Entre em Contato</h2>
+                <p class="text-xl text-gray-400">
+                    Solicite um orçamento ou tire suas dúvidas
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Informações de Contato</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-red-500 text-2xl mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold mb-1">Endereço</h4>
+                                <p class="text-gray-400">R. Anselmo Vaccari, 254 - Águas Belas<br>São José dos Pinhais - PR | 83.040-580</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-phone text-red-500 text-2xl mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold mb-1">Telefone</h4>
+                                <p class="text-gray-400">+55 (41) 3283-4556</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope text-red-500 text-2xl mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold mb-1">E-mail</h4>
+                                <p class="text-gray-400">comercial@normatic.com.br</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fab fa-whatsapp text-green-500 text-2xl mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold mb-1">WhatsApp</h4>
+                                <p class="text-gray-400">+55 (41) 99148-5285</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold mb-4">Horário de Atendimento</h4>
+                        <p class="text-gray-400">Segunda a Sexta: 08h às 18h<br>Sábado: 08h às 12h</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <form class="space-y-4">
+                        <div>
+                            <input type="text" placeholder="Nome Completo" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-red-500 transition">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="E-mail" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-red-500 transition">
+                        </div>
+                        <div>
+                            <input type="tel" placeholder="Telefone" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-red-500 transition">
+                        </div>
+                        <div>
+                            <textarea rows="4" placeholder="Mensagem" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-red-500 transition"></textarea>
+                        </div>
+                        <button type="submit" class="w-full gradient-red py-3 rounded-lg font-bold hover:shadow-xl transition transform hover:scale-105">
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-400 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <div class="text-2xl font-bold text-white mb-4">
+                <img src="logotransparente.png" alt="Normatic" class="h-40 w-auto mx-auto">
+            </div>
+            <p class="mb-4">Tratamentos Térmicos | Excelência e Inovação</p>
+            <p class="text-sm">2025© Normatic. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.remove('navbar-transparent');
+                navbar.classList.add('navbar-solid');
+            } else {
+                navbar.classList.remove('navbar-solid');
+                navbar.classList.add('navbar-transparent');
+            }
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.card-hover').forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                dots[i].classList.remove('active');
+            });
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+        
+        function nextSlide() {
+            let next = (currentSlide + 1) % slides.length;
+            showSlide(next);
+        }
+        
+        // Dots click handlers
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
+        });
+        
+        // Auto-advance carousel every 5 seconds
+        setInterval(nextSlide, 5000);
+    </script>
+</body>
+</html>
+    
